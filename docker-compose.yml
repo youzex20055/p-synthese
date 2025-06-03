@@ -10,11 +10,6 @@ services:
       - "3000:3000"
     environment:
       - REACT_APP_API_URL=http://localhost:1337
-      - NODE_OPTIONS="--max-old-space-size=2048"
-    deploy:
-      resources:
-        limits:
-          memory: 2G
     depends_on:
       - backend
 
@@ -33,11 +28,6 @@ services:
       - DATABASE_USERNAME=nike_user
       - DATABASE_PASSWORD=nike_password
       - NODE_ENV=development
-      - NODE_OPTIONS="--max-old-space-size=2048"
-    deploy:
-      resources:
-        limits:
-          memory: 2G
     depends_on:
       mysql:
         condition: service_healthy
@@ -57,10 +47,6 @@ services:
     volumes:
       - ./nike.sql:/docker-entrypoint-initdb.d/nike.sql
       - mysql_data:/var/lib/mysql
-    deploy:
-      resources:
-        limits:
-          memory: 2G
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
       interval: 5s

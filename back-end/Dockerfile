@@ -5,14 +5,13 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies with memory limit
-ENV NODE_OPTIONS="--max-old-space-size=2048"
+# Force install dependencies without checks
 RUN npm install --force
 
 # Copy the rest of the application
 COPY . .
 
-# Build the application with memory limit
+# Force build without validations
 ENV NODE_ENV=production
 RUN npm run build --force
 
