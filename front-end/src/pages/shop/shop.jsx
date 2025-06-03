@@ -60,7 +60,7 @@ export const Shop = () => {
 
   const getImageUrl = (product) => {
     if (product?.productImage?.length > 0) {
-      const imageUrl = `http://localhost:1337${product.productImage[0].url}`;
+      const imageUrl = `http://18.208.134.101:1337${product.productImage[0].url}`;
       console.log("Image URL:", imageUrl);
       return imageUrl;
     }

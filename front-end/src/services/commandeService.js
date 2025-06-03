@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { authService } from './authService';
 
-const API_URL = 'http://localhost:1337/api';
+const API_URL = 'http://18.208.134.101:1337/api';
 
 export const commandeService = {
   async createCommande(commandeData) {

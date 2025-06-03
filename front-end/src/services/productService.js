@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 export const productApi = createApi({
   reducerPath: 'productApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:1337/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://18.208.134.101:1337/api/' }),
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => 'products?populate=*',
@@ -37,7 +37,7 @@ export const useCustomProductsQuery = () => {
   const isShirts = location.pathname.toLowerCase().includes("proshirt");
   
   return createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:1337/api/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://18.208.134.101:1337/api/' }),
     endpoints: (builder) => ({
       getProducts: builder.query({
         query: () => isShirts ? 'proshirts?populate=*' : 'products?populate=*',

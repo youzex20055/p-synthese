@@ -189,7 +189,7 @@ export const ProductDetail = () => {
       if (item?.productImage) {
         item.productImage.forEach(image => {
           if (image.url) {
-            images.push(`http://localhost:1337${image.url}`);
+            images.push(`http://18.208.134.101:1337${image.url}`);
           }
         });
       }
@@ -199,7 +199,7 @@ export const ProductDetail = () => {
     } else {
       if (item?.productImage?.length > 0) {
         item.productImage.forEach(image => {
-          images.push(`http://localhost:1337${image.url}`);
+          images.push(`http://18.208.134.101:1337${image.url}`);
         });
       }
       if (images.length === 0) {
@@ -223,14 +223,14 @@ export const ProductDetail = () => {
       if (item?.productImage) {
         item.productImage.forEach(image => {
           if (image.url) {
-            images.push(`http://localhost:1337${image.url}`);
+            images.push(`http://18.208.134.101:1337${image.url}`);
           }
         });
       }
     } else {
       if (item?.productImage?.length > 0) {
         item.productImage.forEach(image => {
-          images.push(`http://localhost:1337${image.url}`);
+          images.push(`http://18.208.134.101:1337${image.url}`);
         });
       }
     }
@@ -253,12 +253,12 @@ export const ProductDetail = () => {
     if (location.pathname.includes("proshirt")) {
       // Handle shirt images from Strapi
       if (item?.productImage?.[0]?.url) {
-        return `http://localhost:1337${item.productImage[0].url}`;
+        return `http://18.208.134.101:1337${item.productImage[0].url}`;
       }
     } else {
       // Handle product images
       if (item?.productImage?.length > 0) {
-        return `http://localhost:1337${item.productImage[0].url}`;
+        return `http://18.208.134.101:1337${item.productImage[0].url}`;
       }
     }
     return `/assets/products/${item.id}.jpg`;
