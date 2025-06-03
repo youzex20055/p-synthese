@@ -7,10 +7,10 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'http://localhost:*', 'https://*', 'http://*'],
-          'img-src': ["'self'", 'data:', 'blob:', 'http://localhost:*', 'https://*', 'http://*'],
-          'media-src': ["'self'", 'data:', 'blob:', 'http://localhost:*', 'https://*', 'http://*'],
-          'default-src': ["'self'", 'https://*', 'http://*'],
+          'connect-src': ["'self'", '*'],
+          'img-src': ["'self'", 'data:', 'blob:', '*'],
+          'media-src': ["'self'", 'data:', 'blob:', '*'],
+          'default-src': ["'self'", '*'],
           upgradeInsecureRequests: null,
         },
       },
@@ -20,7 +20,7 @@ export default [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['http://localhost:3000', 'http://localhost:1337', 'http://18.208.134.101:*', 'https://*', 'http://*'],
+      origin: '*',
       headers: ['*'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       credentials: true,
