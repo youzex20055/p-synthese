@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    container_name: nike_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:1337
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    container_name: nike_backend
+    ports:
+      - "1337:1337"
+    environment:
+      - DATABASE_CLIENT=mysql
+      - DATABASE_HOST=mysql
+      - DATABASE_PORT=3306
+      - DATABASE_NAME=nike_db
+      - DATABASE_USERNAME=nike_user
+      - DATABASE_PASSWORD=nike_password
+      - NODE_ENV=development
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    container_name: nike_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: nike_db
+      MYSQL_USER: nike_user
+      MYSQL_PASSWORD: nike_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./nike.sql:/docker-entrypoint-initdb.d/nike.sql
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  mysql_data: 

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "proaccs",
+  "info": {
+    "singularName": "proacc",
+    "pluralName": "proaccs",
+    "displayName": "proacc"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "productImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "productName": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

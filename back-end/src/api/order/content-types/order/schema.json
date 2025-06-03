@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": "Customer orders with product details"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "orderItems": {
+      "type": "json",
+      "required": true,
+      "description": "Array of ordered items with their details"
+    },
+    "totalAmount": {
+      "type": "decimal",
+      "required": true
+    },
+    "shippingAddress": {
+      "type": "text",
+      "required": true
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": ["credit_card", "paypal", "cash_on_delivery"],
+      "required": true
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "paid", "failed"],
+      "default": "pending"
+    },
+    "orderStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "processing", "shipped", "delivered", "cancelled"],
+      "default": "pending"
+    },
+    "orderDate": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

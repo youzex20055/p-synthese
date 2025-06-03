@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "proshirts",
+  "info": {
+    "singularName": "proshirt",
+    "pluralName": "proshirts",
+    "displayName": "proshirt",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "productImage": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "productName": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "required": true,
+      "type": "decimal"
+    },
+    "color": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
