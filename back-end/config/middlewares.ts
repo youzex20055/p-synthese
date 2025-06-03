@@ -4,25 +4,13 @@ export default [
   {
     name: 'strapi::security',
     config: {
-      contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-          'connect-src': ["'self'", '*'],
-          'img-src': ["'self'", 'data:', 'blob:', '*', 'http://*', 'https://*'],
-          'media-src': ["'self'", 'data:', 'blob:', '*', 'http://*', 'https://*'],
-          'default-src': ["'self'", '*'],
-          'frame-src': ["'self'", '*'],
-          'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", '*'],
-          'style-src': ["'self'", "'unsafe-inline'", '*'],
-          upgradeInsecureRequests: null,
-        },
-      },
+      contentSecurityPolicy: false,
       crossOriginEmbedderPolicy: false,
       crossOriginOpenerPolicy: false,
-      crossOriginResourcePolicy: { policy: "cross-origin" },
-      xssFilter: true,
-      noSniff: true,
-      frameGuard: true,
+      crossOriginResourcePolicy: false,
+      xssFilter: false,
+      noSniff: false,
+      frameGuard: false,
     },
   },
   {
@@ -30,7 +18,7 @@ export default [
     config: {
       enabled: true,
       origin: '*',
-      headers: ['*'],
+      headers: '*',
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       credentials: true,
       keepHeaderOnError: true,

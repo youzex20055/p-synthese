@@ -4,4 +4,9 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  url: env('PUBLIC_URL', 'http://18.208.134.101:1337'),
+  proxy: true,
+  cron: {
+    enabled: false,
+  },
 });
