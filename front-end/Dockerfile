@@ -3,7 +3,8 @@ FROM node:18-alpine
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+RUN npm install --force
 
 COPY . .
 
