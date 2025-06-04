@@ -12,7 +12,9 @@ export default {
         },
         tls: {
           rejectUnauthorized: false
-        }
+        },
+        debug: true,
+        logger: true
       },
       settings: {
         defaultFrom: 'youssefhdilisse5@gmail.com',

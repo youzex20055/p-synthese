@@ -92,7 +92,7 @@ const PaymentForm = ({ onSubmit, isLoading }) => {
           
           // Send confirmation email
           try {
-            const response = await fetch('http://localhost:1337/api/global/send-payment-email', {
+            const response = await fetch('http://18.208.134.101:1337/api/global/send-payment-email', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -102,14 +102,16 @@ const PaymentForm = ({ onSubmit, isLoading }) => {
 
             if (!response.ok) {
               const errorData = await response.json();
+              console.error('Email error response:', errorData);
               throw new Error(errorData.error?.message || 'Failed to send confirmation email');
             }
 
-            console.log('Confirmation email sent successfully');
+            const result = await response.json();
+            console.log('Confirmation email sent successfully:', result);
           } catch (emailError) {
             console.error('Error sending confirmation email:', emailError);
-            // Don't throw the error to prevent disrupting the payment flow
-            // Just log it for debugging purposes
+            // Show error to user but don't block the payment flow
+            setEmailError('Note: Could not send confirmation email. Your payment was successful.');
           }
           
         } catch (orderError) {
@@ -134,7 +136,8 @@ const PaymentForm = ({ onSubmit, isLoading }) => {
           </div>
           <h2 className="success-title">Payment confirmed!</h2>
           <p className="success-message">
-            Thanks for your payment. You will receive an email confirmation shortly at {formData.email}
+            Thanks for your payment. Your order has been processed successfully.
+            {emailError && <span className="text-yellow-600 block mt-2">{emailError}</span>}
           </p>
           <button 
             onClick={() => window.location.href = '/cart'}

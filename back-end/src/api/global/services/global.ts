@@ -16,7 +16,17 @@ export default factories.createCoreService('api::global.global', ({ strapi }) =>
     }
 
     try {
-      const result = await strapi.plugins['email'].services.email.send({
+      // Verify email plugin is available
+      if (!strapi.plugins.email) {
+        throw new Error('Email plugin is not available');
+      }
+
+      // Verify email service is available
+      if (!strapi.plugins.email.services.email) {
+        throw new Error('Email service is not available');
+      }
+
+      const emailOptions = {
         to: email,
         from: 'youssefhdilisse5@gmail.com',
         subject: 'Payment Confirmation - Your Order Details',
@@ -36,7 +46,12 @@ export default factories.createCoreService('api::global.global', ({ strapi }) =>
             <p>Best regards,<br>YOUZEX SPORT</p>
           </div>
         `,
-      });
+      };
+
+      console.log('Sending email with options:', { ...emailOptions, text: '[REDACTED]', html: '[REDACTED]' });
+      
+      const result = await strapi.plugins.email.services.email.send(emailOptions);
+      
       console.log('Email sent successfully:', result);
       return true;
     } catch (error) {
@@ -44,7 +59,8 @@ export default factories.createCoreService('api::global.global', ({ strapi }) =>
       console.error('Error details:', {
         message: error.message,
         stack: error.stack,
-        response: error.response
+        response: error.response,
+        code: error.code
       });
       throw error;
     }
