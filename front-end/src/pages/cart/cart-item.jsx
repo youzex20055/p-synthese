@@ -49,7 +49,7 @@ export const CartItem = ({ id, name, price, image, size, color, jerseyType, quan
         
         const selectedImage = jerseyImages[jerseyTypeIndex];
         if (selectedImage?.attributes?.url) {
-          return `http://localhost:1337${selectedImage.attributes.url}`;
+          return `http://18.208.134.101:1337${selectedImage.attributes.url}`;
         }
       } else {
         // For shoes, find the color index in the product's colors array
@@ -62,14 +62,14 @@ export const CartItem = ({ id, name, price, image, size, color, jerseyType, quan
         const selectedImage = shoeImages[colorIndex >= 0 ? colorIndex : 0];
         
         if (selectedImage?.attributes?.url) {
-          return `http://localhost:1337${selectedImage.attributes.url}`;
+          return `http://18.208.134.101:1337${selectedImage.attributes.url}`;
         }
       }
     }
 
     // If we have an image prop, use that
     if (image?.url) {
-      return `http://localhost:1337${image.url}`;
+      return `http://18.208.134.101:1337${image.url}`;
     }
     if (image?.startsWith('http')) {
       return image;
@@ -77,7 +77,7 @@ export const CartItem = ({ id, name, price, image, size, color, jerseyType, quan
 
     // If we have a default image in Strapi, use that
     if (productData?.attributes?.defaultImage?.data?.attributes?.url) {
-      return `http://localhost:1337${productData.attributes.defaultImage.data.attributes.url}`;
+      return `http://18.208.134.101:1337${productData.attributes.defaultImage.data.attributes.url}`;
     }
 
     // Last resort fallback - use a default image from the public folder

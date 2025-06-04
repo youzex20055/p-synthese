@@ -72,9 +72,9 @@ const ProductGrid = ({ products, currentImageIndex }) => {
   const getImageUrl = (proshirt) => {
     if (proshirt?.productImage?.length > 0) {
       if (proshirt.productImage[currentImageIndex]) {
-        return `http://localhost:1337${proshirt.productImage[currentImageIndex].url}`;
+        return `http://18.208.134.101:1337${proshirt.productImage[currentImageIndex].url}`;
       }
-      return `http://localhost:1337${proshirt.productImage[0].url}`;
+      return `http://18.208.134.101:1337${proshirt.productImage[0].url}`;
     }
     return `/assets/shirts/${proshirt.id}.jpg`;
   };
@@ -107,7 +107,10 @@ export const Shirts = () => {
 
   const getImageUrl = (proshirt) => {
     if (proshirt?.productImage?.length > 0) {
-      return `http://localhost:1337${proshirt.productImage[0].url}`;
+      if (proshirt.productImage[currentImageIndex]) {
+        return `http://18.208.134.101:1337${proshirt.productImage[currentImageIndex].url}`;
+      }
+      return `http://18.208.134.101:1337${proshirt.productImage[0].url}`;
     }
     return `/assets/shirts/${proshirt.id}.jpg`;
   };
