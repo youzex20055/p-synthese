@@ -100,20 +100,11 @@ const ProductGrid = ({ products, currentImageIndex }) => {
 // Main Shirts component
 export const Shirts = () => {
   const { data, error, isLoading } = useGetProshirtsQuery();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     console.log("API Response:", data);
   }, [data]);
-
-  const getImageUrl = (proshirt) => {
-    if (proshirt?.productImage?.length > 0) {
-      if (proshirt.productImage[currentImageIndex]) {
-        return `http://18.208.134.101:1337${proshirt.productImage[currentImageIndex].url}`;
-      }
-      return `http://18.208.134.101:1337${proshirt.productImage[0].url}`;
-    }
-    return `/assets/shirts/${proshirt.id}.jpg`;
-  };
 
   if (isLoading) return <div className="loading">Loading shirts...</div>;
   if (error) {
@@ -126,20 +117,7 @@ export const Shirts = () => {
       <div className="shopTitle">
         {/* Removed jersey type selector from here */}
       </div>
-      <div className="products">
-        {data?.data?.map((proshirt) => (
-          <Product 
-            key={proshirt.id}
-            id={proshirt.id}
-            name={proshirt.productName}
-            price={proshirt.price}
-            image={getImageUrl(proshirt)}
-            productImage={proshirt.productImage}
-            size={proshirt.size}
-            color={proshirt.color}
-          />
-        ))}
-      </div>
+      <ProductGrid products={data?.data} currentImageIndex={currentImageIndex} />
       <section className="section__container brands__container">
         <div className="brand__image">
           <img src="/assets/products/brand-1.png" alt="brand" />
