@@ -120,7 +120,7 @@ export const Cart = () => {
                   jerseyType={jerseyType}
                   quantity={item.quantity}
                   image={product.productImage?.[0]?.url 
-                    ? `http://localhost:1337${product.productImage[jerseyType === 'AWAY' ? 1 : jerseyType === 'THIRD' ? 2 : 0].url}`
+                    ? `http://18.208.134.101:1337${product.productImage[jerseyType === 'AWAY' ? 1 : jerseyType === 'THIRD' ? 2 : 0].url}`
                     : `/assets/products/${productId}.jpg`}
                 />
                 <button 
