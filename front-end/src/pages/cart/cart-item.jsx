@@ -12,7 +12,7 @@ export const CartItem = ({ id, name, price, image, size, color, jerseyType, quan
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch(`http://localhost:1337/api/products/${id}?populate=*`);
+        const response = await fetch(`http://18.208.134.101:1337/api/products/${id}?populate=*`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

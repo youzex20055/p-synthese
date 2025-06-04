@@ -64,7 +64,7 @@ export const Accessories = () => {
 
   const getImageUrl = (proacc) => {
     if (proacc?.productImage?.length > 0) {
-      const imageUrl = `http://localhost:1337${proacc.productImage[0].url}`;
+      const imageUrl = `http://18.208.134.101:1337${proacc.productImage[0].url}`;
       console.log("Image URL:", imageUrl);
       return imageUrl;
     }

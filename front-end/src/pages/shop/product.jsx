@@ -40,7 +40,7 @@ export const Product = ({ id, name, price, image, size, color, productImage }) =
 
   const getJerseyImage = () => {
     if (productImage && productImage[currentImageIndex]) {
-      return `http://localhost:1337${productImage[currentImageIndex].url}`;
+      return `http://18.208.134.101:1337${productImage[currentImageIndex].url}`;
     }
     return image;
   };
