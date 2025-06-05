@@ -39,7 +39,7 @@ const Search = () => {
 
   const getImageUrl = (product) => {
     if (product?.productImage?.length > 0) {
-      return `http://localhost:1337${product.productImage[0].url}`;
+      return `http://18.208.134.101:1337${product.productImage[0].url}`;
     }
     return `/assets/products/${product.id}.jpg`;
   };
